@@ -13,17 +13,20 @@
     <div
       class="flex items-center flex-shrink-0 text-black mr-6 dark:text-white"
     >
-      <svg
+      <img
+        v-if="theme === 'light'"
         class="fill-current h-8 w-8 mr-2"
         width="54"
         height="54"
-        viewBox="0 0 54 54"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <path
-          d="M13.5 22.1c1.8-7.2 6.3-10.8 13.5-10.8 10.8 0 12.15 8.1 17.55 9.45 3.6.9 6.75-.45 9.45-4.05-1.8 7.2-6.3 10.8-13.5 10.8-10.8 0-12.15-8.1-17.55-9.45-3.6-.9-6.75.45-9.45 4.05zM0 38.3c1.8-7.2 6.3-10.8 13.5-10.8 10.8 0 12.15 8.1 17.55 9.45 3.6.9 6.75-.45 9.45-4.05-1.8 7.2-6.3 10.8-13.5 10.8-10.8 0-12.15-8.1-17.55-9.45-3.6-.9-6.75.45-9.45 4.05z"
-        />
-      </svg>
+        src="@/assets/settings_ethernet_black_48dp.svg"
+      />
+      <img
+        v-else
+        class="fill-current h-8 w-8 mr-2"
+        width="54"
+        height="54"
+        src="@/assets/settings_ethernet_white_48dp.svg"
+      />
       <span class="font-semibold text-xl tracking-tight mr-5">RF Dev</span>
     </div>
     <div class="block lg:hidden">
@@ -71,7 +74,6 @@
             nav-link
             lg:inline-block lg:mt-0
             text-teal-200
-            hover:text-white
             mr-4
           "
         >
@@ -79,28 +81,13 @@
         </a>
         <a
           href="#responsive-header"
-          class="
-            block
-            mt-4
-            nav-link
-            lg:inline-block lg:mt-0
-            text-teal-200
-            hover:text-white
-            mr-4
-          "
+          class="block mt-4 nav-link lg:inline-block lg:mt-0 text-teal-200 mr-4"
         >
           Projects
         </a>
         <a
           href="#responsive-header"
-          class="
-            block
-            mt-4
-            nav-link
-            lg:inline-block lg:mt-0
-            text-teal-200
-            hover:text-white
-          "
+          class="block mt-4 nav-link lg:inline-block lg:mt-0 text-teal-200"
         >
           About me
         </a>
@@ -110,7 +97,6 @@
           href="#"
           class="
             inline-block
-            text-sm
             px-4
             py-2
             leading-none
@@ -120,6 +106,7 @@
             mt-4
             lg:mt-0
           "
+          @click="toggleTheme"
           >{{ themeText }}</a
         >
       </div>
@@ -127,20 +114,42 @@
   </nav>
 </template>
 <script>
+import { mapGetters } from "vuex";
 export default {
   data() {
     return {
       menuOpen: false,
     };
   },
-  props: {
-    themeText: {
-      type: String,
+  computed: {
+    ...mapGetters({ theme: "getTheme" }),
+    themeText() {
+      if (this.theme === "light") {
+        return "Dark Mode";
+      } else {
+        return "Light Mode";
+      }
+    },
+  },
+  mounted() {
+    this.$store.dispatch("initTheme");
+  },
+  watch: {
+    theme(newTheme) {
+      newTheme === "light"
+        ? document.querySelector("html").classList.remove("dark")
+        : document.querySelector("html").classList.add("dark");
     },
   },
   methods: {
     toggleMenu() {
       this.menuOpen = !this.menuOpen;
+    },
+    switchDarkMode() {
+      this.darkMode = !this.darkMode;
+    },
+    toggleTheme() {
+      this.$store.dispatch("toggleTheme");
     },
   },
 };

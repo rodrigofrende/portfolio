@@ -3,3 +3,30 @@
 @tailwind components;
 
 @tailwind utilities;
+
+@layer utilities {
+  * {
+    font-family: 'Roboto Mono', monospace;
+  }
+  .nav-link {
+    color: black;
+    font-family: 'Roboto Mono', monospace;
+    font-size: 1rem;
+  }
+  .nav-link.active {
+    color: white;
+    text-decoration: underline white;
+  }
+  .nav-link:hover {
+    color: white;
+  }
+  html.dark .nav-link  {
+    color: white !important;
+  }
+  html.dark .nav-link:hover {
+    color: black !important;
+  }
+  html.dark .nav-link.active:hover {
+    color: white !important;
+  }
+}

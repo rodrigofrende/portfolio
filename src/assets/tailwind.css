@@ -8,8 +8,12 @@
   * {
     font-family: 'Roboto Mono', monospace;
   }
-
+  /* text */
+  .text-transform {
+    @apply transition-all duration-1000;
+  }
   /* navlink */
+
   .nav-link {
     @apply transition-all duration-500;
     color: black;
@@ -27,13 +31,13 @@
     color: white !important;
   }
   html.dark .nav-link:hover {
-    color: black !important;
+    color: #ff8d00d1 !important;
   }
   html.dark .nav-link.active:hover {
     color: white !important;
   }
   /* buttons */
   button {
-    @apply transition-all duration-500 rounded-xl justify-center py-2 px-4 border-2 dark:bg-blue-dark dark:text-white font-bold bg-blue-light text-black ;
+    @apply transition-all duration-300 rounded-xl justify-center py-2 px-4 border-2 dark:bg-blue-dark dark:text-white font-bold bg-blue-light text-black hover:shadow-inner transform hover:scale-105 hover:bg-opacity-25;
   }
 }

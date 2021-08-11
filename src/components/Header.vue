@@ -7,6 +7,7 @@
       justify-between
       flex-wrap
       bg-header-bar
+      dark:bg-header-bar-dark
       p-4
     "
   >
@@ -62,20 +63,14 @@
         flex-grow
         lg:flex lg:items-center lg:w-auto lg:text-left
       "
-      :class="menuOpen ? 'hidden' : 'block'"
+      :class="menuOpen ? 'block' : 'hidden'"
     >
       <div class="lg:flex-grow">
         <a
           href="#responsive-header"
-          class="
-            active
-            block
-            mt-4
-            nav-link
-            lg:inline-block lg:mt-0
-            text-teal-200
-            mr-4
-          "
+          class="block mt-4 nav-link lg:inline-block lg:mt-0 text-teal-200 mr-4"
+          :class="activeMenu === 'home' ? 'active' : ''"
+          @click="showHome"
         >
           Home
         </a>
@@ -88,6 +83,8 @@
         <a
           href="#responsive-header"
           class="block mt-4 nav-link lg:inline-block lg:mt-0 text-teal-200"
+          :class="activeMenu === 'about' ? 'active' : ''"
+          @click="showAbout"
         >
           About me
         </a>
@@ -119,6 +116,7 @@ export default {
   data() {
     return {
       menuOpen: false,
+      activeMenu: "home",
     };
   },
   computed: {
@@ -142,6 +140,14 @@ export default {
     },
   },
   methods: {
+    showHome() {
+      this.activeMenu = "home";
+      this.$emit("changeView", "home");
+    },
+    showAbout() {
+      this.activeMenu = "about";
+      this.$emit("changeView", "about");
+    },
     toggleMenu() {
       this.menuOpen = !this.menuOpen;
     },

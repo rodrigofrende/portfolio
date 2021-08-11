@@ -3,7 +3,7 @@
     class="
       container
       mx-auto
-      h-screen
+      h-full
       p-10
       rounded-lg
       transition-all
@@ -12,27 +12,57 @@
       dark:bg-blue-dark
     "
   >
-    <Header />
-    <div class="grid grid-cols-12">
-      <div class="col-span-12">
-        <h1 class="text-yellow-400 flex justify-center">R F</h1>
-        <button class="" type="button">Button</button>
-      </div>
-    </div>
+    <Header @changeView="switchView" />
+    <Home v-if="showHome" />
+    <About v-if="showAbout" />
     <router-link class="" to="/"></router-link>
   </div>
 </template>
 
 <script>
 import Header from "@/components/Header";
+import Home from "@/components/Home";
+import About from "@/components/About";
+
 export default {
   components: {
     Header,
+    Home,
+    About,
   },
   data() {
-    return {};
+    return {
+      showHome: true,
+      showAbout: false,
+    };
+  },
+  methods: {
+    mainHome() {
+      this.showHome = true;
+    },
+    mainAbout() {
+      this.showAbout = true;
+    },
+    switchView(route) {
+      (this.showHome = false), (this.showAbout = false);
+
+      switch (route) {
+        case "home":
+          this.mainHome();
+          break;
+        case "about":
+          this.mainAbout();
+          break;
+        default:
+          break;
+      }
+    },
   },
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+.h-full {
+  min-height: 100vh;
+}
+</style>

@@ -73,7 +73,7 @@
               "
             >
               I love technology and to be constantly learning things, also i am
-              a musician and like taking photos.
+              a musician and i like taking photos.
             </p>
           </blockquote>
         </div>
@@ -210,7 +210,7 @@
     <div class="col-span-12 text-center">
       <div class="px-8">
         <div
-          class="pt-6 md:py-10 text-center md:text-left space-y-4 dark:text-white"
+          class="py-6 md:py-10 text-center md:text-left space-y-4 dark:text-white"
         >
           <blockquote>
             <p
@@ -221,7 +221,7 @@
                 animate__animated animate__delay-5s animate__slideInLeft
               "
             >
-              Now you know me, tell me something about you at:
+              Now that you know me, tell me something about you on:
             </p>
           </blockquote>
           <div
@@ -256,9 +256,10 @@
                 duration-100
                 hover:scale-125 hover:bg-opacity-25
               "
-              src="@/assets/mail.png"
-              alt="Email me"
+              src="@/assets/github-bottom.png"
+              alt="My Github"
             />
+            <span class="self-center text-lg font-semibold">Or by email: </span>
             <img
               class="
                 w-8
@@ -269,8 +270,8 @@
                 duration-100
                 hover:scale-125 hover:bg-opacity-25
               "
-              src="@/assets/github-bottom.png"
-              alt="My Github"
+              src="@/assets/mail.png"
+              alt="Email me"
             />
           </div>
         </div>

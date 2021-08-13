@@ -14,6 +14,7 @@ module.exports = {
       "header-bar-dark": "#242424",
       "orange-dark": "#ff8d00d1",
       "blue-text": "#05489c",
+      transparent: colors.transparent,
       white: colors.white,
       black: colors.black,
     },

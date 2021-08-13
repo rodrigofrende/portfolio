@@ -39,6 +39,7 @@
       <button
         class="animate__animated animate__fadeIn animate__delay-2s"
         type="button"
+        @click="showAbout"
       >
         Let's start!
       </button>
@@ -47,7 +48,14 @@
 </template>
 
 <script>
-export default {};
+export default {
+  methods: {
+    showAbout() {
+      this.$emit("changeView", "about");
+      this.$emit("setActive", "about");
+    },
+  },
+};
 </script>
 
 <style scoped>

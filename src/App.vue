@@ -8,12 +8,12 @@
       rounded-lg
       transition-all
       duration-500
-      bg-blue-light
+      bg-white
       dark:bg-blue-dark
     "
   >
-    <Header @changeView="switchView" />
-    <Home v-if="showHome" />
+    <Header ref="header" @changeView="switchView" />
+    <Home @changeView="switchView" v-if="showHome" />
     <About v-if="showAbout" />
     <router-link class="" to="/"></router-link>
   </div>
@@ -35,6 +35,13 @@ export default {
       showHome: true,
       showAbout: false,
     };
+  },
+  watch: {
+    showAbout(val) {
+      if (val) {
+        this.$refs.header.activeMenu = "about";
+      }
+    },
   },
   methods: {
     mainHome() {

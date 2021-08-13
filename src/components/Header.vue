@@ -67,7 +67,7 @@
     >
       <div class="lg:flex-grow">
         <a
-          href="#responsive-header"
+          href="#"
           class="block mt-4 nav-link lg:inline-block lg:mt-0 text-teal-200 mr-4"
           :class="activeMenu === 'home' ? 'active' : ''"
           @click="showHome"
@@ -75,13 +75,13 @@
           Home
         </a>
         <a
-          href="#responsive-header"
+          href="#"
           class="block mt-4 nav-link lg:inline-block lg:mt-0 text-teal-200 mr-4"
         >
           Projects
         </a>
         <a
-          href="#responsive-header"
+          href="#"
           class="block mt-4 nav-link lg:inline-block lg:mt-0 text-teal-200"
           :class="activeMenu === 'about' ? 'active' : ''"
           @click="showAbout"

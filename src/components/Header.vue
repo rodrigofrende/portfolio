@@ -77,6 +77,8 @@
         <a
           href="#"
           class="block mt-4 nav-link lg:inline-block lg:mt-0 text-teal-200 mr-4"
+          :class="activeMenu === 'projects' ? 'active' : ''"
+          @click="showProjects"
         >
           Projects
         </a>
@@ -89,13 +91,11 @@
           About me
         </a>
       </div>
-      <div>
-        <a
-          href="#"
+      <div class="flex justify-center">
+        <button
           class="
             inline-block
-            px-4
-            py-2
+            mx-3
             leading-none
             nav-link
             border
@@ -103,9 +103,36 @@
             mt-4
             lg:mt-0
           "
-          @click="toggleTheme"
-          >{{ themeText }}</a
+          @click="downloadCV"
         >
+          I just want your CV
+        </button>
+        <img
+          v-if="theme === 'light'"
+          @click="toggleTheme"
+          class="inline-block px-2 py-1 nav-link border rounded mt-4 lg:mt-0"
+          width="41"
+          height="41"
+          src="@/assets/moon.png"
+        />
+        <img
+          v-else
+          @click="toggleTheme"
+          class="
+            inline-block
+            px-2
+            py-1
+            leading-none
+            nav-link
+            border
+            rounded
+            mt-4
+            lg:mt-0
+          "
+          width="41"
+          height="41"
+          src="@/assets/sun.png"
+        />
       </div>
     </div>
   </nav>
@@ -140,9 +167,18 @@ export default {
     },
   },
   methods: {
+    downloadCV() {
+      window.open(
+        "https://drive.google.com/file/d/1jpdkSmoPMGFUPvkiofOq3JQo8GcGiOIo/view"
+      );
+    },
     showHome() {
       this.activeMenu = "home";
       this.$emit("changeView", "home");
+    },
+    showProjects() {
+      this.activeMenu = "projects";
+      this.$emit("changeView", "projects");
     },
     showAbout() {
       this.activeMenu = "about";
@@ -161,4 +197,8 @@ export default {
 };
 </script>
 
-<style></style>
+<style scoped>
+button {
+  background-color: transparent !important;
+}
+</style>

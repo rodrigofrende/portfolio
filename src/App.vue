@@ -14,8 +14,10 @@
   >
     <Header ref="header" @changeView="switchView" />
     <Home @changeView="switchView" v-if="showHome" />
+    <Projects @changeView="switchView" v-if="showProjects" />
     <About v-if="showAbout" />
     <router-link class="" to="/"></router-link>
+    <notifications position="center bottom" />
   </div>
 </template>
 
@@ -23,17 +25,20 @@
 import Header from "@/components/Header";
 import Home from "@/components/Home";
 import About from "@/components/About";
+import Projects from "@/components/Projects";
 
 export default {
   components: {
     Header,
     Home,
     About,
+    Projects,
   },
   data() {
     return {
       showHome: true,
       showAbout: false,
+      showProjects: false,
     };
   },
   watch: {
@@ -50,8 +55,13 @@ export default {
     mainAbout() {
       this.showAbout = true;
     },
+    mainProjects() {
+      this.showProjects = true;
+    },
     switchView(route) {
-      (this.showHome = false), (this.showAbout = false);
+      (this.showHome = false),
+        (this.showAbout = false),
+        (this.showProjects = false);
 
       switch (route) {
         case "home":
@@ -59,6 +69,9 @@ export default {
           break;
         case "about":
           this.mainAbout();
+          break;
+        case "projects":
+          this.mainProjects();
           break;
         default:
           break;

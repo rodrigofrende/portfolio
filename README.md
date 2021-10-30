@@ -1,3 +1,2 @@
 # portfolio
-my name is Rodrigo and this is my
- web dev portfolio
+using tailwind css, vue js & animated css

@@ -14,6 +14,7 @@
         <img
           id="start"
           class="
+            my-auto
             w-40
             h-40
             mx-auto
@@ -129,6 +130,12 @@
               src="@/assets/vue.png"
               alt="Vue js"
               title="Vue JS 2 & 3"
+            />
+            <img
+              class="w-10 h-10 md:w-20 md:h-20"
+              src="@/assets/react.png"
+              alt="React js"
+              title="React js"
             />
             <img
               class="w-10 h-10 md:w-20 md:h-20"

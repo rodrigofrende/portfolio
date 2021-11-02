@@ -59,7 +59,7 @@ export default {
       this.showProjects = true;
     },
     switchView(route) {
-      (this.showHome = false),
+        (this.showHome = false),
         (this.showAbout = false),
         (this.showProjects = false);
 

@@ -70,7 +70,7 @@
           href="#"
           class="block mt-4 nav-link lg:inline-block lg:mt-0 text-teal-200 mr-4"
           :class="activeMenu === 'home' ? 'active' : ''"
-          @click="showHome"
+          @click="handlePage('home')"
         >
           Home
         </a>
@@ -78,7 +78,7 @@
           href="#"
           class="block mt-4 nav-link lg:inline-block lg:mt-0 text-teal-200 mr-4"
           :class="activeMenu === 'projects' ? 'active' : ''"
-          @click="showProjects"
+          @click="handlePage('projects')"
         >
           Projects
         </a>
@@ -86,7 +86,7 @@
           href="#"
           class="block mt-4 nav-link lg:inline-block lg:mt-0 text-teal-200"
           :class="activeMenu === 'about' ? 'active' : ''"
-          @click="showAbout"
+          @click="handlePage('about')"
         >
           About me
         </a>
@@ -172,17 +172,10 @@ export default {
         "https://drive.google.com/file/d/1jpdkSmoPMGFUPvkiofOq3JQo8GcGiOIo/view"
       );
     },
-    showHome() {
-      this.activeMenu = "home";
-      this.$emit("changeView", "home");
-    },
-    showProjects() {
-      this.activeMenu = "projects";
-      this.$emit("changeView", "projects");
-    },
-    showAbout() {
-      this.activeMenu = "about";
-      this.$emit("changeView", "about");
+    handlePage(page) {
+      this.activeMenu = page;
+      this.$emit("changeView", page)
+      this.toggleMenu()
     },
     toggleMenu() {
       this.menuOpen = !this.menuOpen;
